@@ -33,7 +33,7 @@ function keyBoardEvent(event) {
         }
         putScore('life', currentLife);
     }
-    setTimeout(timeOut, 10000);
+    setTimeout(timeOut, 60000);
 }
 const playAgain = document.getElementById('playagain');
 playAgain.addEventListener('click', function () {
