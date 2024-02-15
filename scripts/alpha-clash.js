@@ -33,11 +33,19 @@ function keyBoardEvent(event) {
         }
         putScore('life', currentLife);
     }
+    setTimeout(timeOut, 10000);
 }
 const playAgain = document.getElementById('playagain');
 playAgain.addEventListener('click', function () {
     pageSwitch('play-again', 'playground');
-    putScore('life', 5);
+    putScore('life', 3);
     putScore('scoreboard', 0);
 })
+function timeOut() {
+    let finalScore = document.getElementById('scoreboard').innerText;
+    finalScore = parseInt(finalScore);
+    console.log(finalScore);
+    pageSwitch('playground', 'play-again');
+    putScore('finalscore', finalScore);
+}
 document.addEventListener('keyup', keyBoardEvent);
