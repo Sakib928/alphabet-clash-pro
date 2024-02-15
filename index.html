@@ -14,14 +14,14 @@
     <!-- overall container -->
     <div class="bg-[#010313] min-h-screen bg-[url('images/background.png')] bg-no-repeat bg-center">
         <!-- landing page -->
-        <section class="flex flex-col items-center justify-center min-h-screen hidden" id="home">
+        <section class="flex flex-col items-center justify-center min-h-screen " id="home">
             <h1 class="text-white anton-regular text-9xl">ALPHABET CLASH</h1>
             <p class="text-2xl poppins-medium text-white py-6">Unleash Your Keyboard Kung Fu : Press “Enter” to Play</p>
-            <button onclick="pageSwitch('home', 'playground')" class="btn text-black poppins-semibold">Play
+            <button class="btn text-black poppins-semibold">Play
                 Now</button>
         </section>
         <!-- playing page -->
-        <section class="flex flex-col justify-center items-center min-h-screen " id="playground">
+        <section class="flex flex-col justify-center items-center min-h-screen hidden" id="playground">
             <!-- artboard container -->
             <div class="border-[20px] bg-[#ffffffb3] rounded-2xl border-[#010313cc] mb-6">
                 <div class="artboard artboard-horizontal phone-6">
@@ -29,7 +29,7 @@
                         keyboard while
                         playing...
                     </p>
-                    <p class="flex justify-center items-center h-full text-[120px] poppins-medium text-black"
+                    <p class="flex justify-center items-center h-full text-[120px] poppins-medium text-black uppercase"
                         id="console">Y</p>
                 </div>
             </div>
@@ -65,26 +65,25 @@
                 <kbd id="b" class="kbd">b</kbd>
                 <kbd id="n" class="kbd">n</kbd>
                 <kbd id="m" class="kbd">m</kbd>
-                <kbd id="/" class="kbd">/</kbd>
             </div>
             <div class="flex justify-between w-2/3">
                 <button class="btn bg-fuchsia-600 border-none text-white">Life <img src="images/heart.svg" alt=""><span
                         id="life">5</span></button>
                 <button class="btn bg-violet-600 border-none text-white">Score<img src="images/monetization_on.svg"
-                        alt=""><span id="scoreBoard">0</span></button>
+                        alt=""><span id="scoreboard">0</span></button>
             </div>
         </section>
         <!-- score page -->
         <div class="flex justify-center items-center min-h-screen hidden" id="play-again">
             <div class="text-center text-white score-bg rounded-2xl p-6">
-                <h1 class="poppins-bold text-6xl">Score : <span class="poppins-medium" id="finalScore">14</span></h1>
-                <button onclick="pageSwitch('play-again', 'playground')"
-                    class="btn text-black poppins-semibold my-6">Play Again</button>
+                <h1 class="poppins-bold text-6xl">Score : <span class="poppins-medium" id="finalscore">0</span></h1>
+                <button class="btn text-black poppins-semibold my-6" id="playagain">Play Again</button>
                 <p class="poppins-medium">Practice will make you Pro</p>
             </div>
         </div>
     </div>
     <script src="scripts/alpha-clash.js"></script>
+    <script src="scripts/utility.js"></script>
 </body>
 
 </html>

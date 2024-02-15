@@ -1,36 +1,43 @@
-function pageHide(pageName) {
-    let x = document.getElementById(pageName).classList;
-    x.add('hidden');
+const homePage = document.getElementById('home');
+homePage.addEventListener('click', function () {
+    pageSwitch('home', 'playground');
+    continueGame();
+})
+function continueGame() {
+    const alphabet = charGenerator();
+    const currentAlphabet = document.getElementById('console');
+    currentAlphabet.innerText = alphabet;
 }
-function pageShow(pageName) {
-    let x = document.getElementById(pageName).classList;
-    x.remove('hidden');
+function keyBoardEvent(event) {
+    const pressedKey = event.key;
+    const validKey = document.getElementById('console').innerText.toLowerCase();
+    // console.log(validKey);
+    if (pressedKey === validKey) {
+        let currentScore = document.getElementById('scoreboard').innerText;
+        currentScore = parseInt(currentScore);
+        currentScore = currentScore + 1;
+        console.log(currentScore);
+        putScore('scoreboard', currentScore);
+        removeButtonEffect(pressedKey);
+        continueGame();
+    } else {
+        let currentLife = document.getElementById('life').innerText;
+        currentLife = parseInt(currentLife);
+        currentLife = currentLife - 1;
+        if (currentLife === 0) {
+            let finalScore = document.getElementById('scoreboard').innerText;
+            finalScore = parseInt(finalScore);
+            console.log(finalScore);
+            pageSwitch('playground', 'play-again');
+            putScore('finalscore', finalScore);
+        }
+        putScore('life', currentLife);
+    }
 }
-function pageSwitch(page1, page2) {
-    pageHide(page1);
-    pageShow(page2);
-}
-function charGenerator() {
-    let alphabets = 'abcdefghijklmnopqrstuvwxyz';
-    let randomNum = Math.floor(Math.random() * 26 + 0);
-    let display = document.getElementById('console');
-    display.innerText = alphabets[randomNum];
-}
-function putScore(id, value) {
-    let scorePlace = document.getElementById(id);
-    scorePlace.innerText = value;
-}
-let score = 0, lives = 5, valid = 'y';
-window.addEventListener('keydown', function (event) {
-    let pressedKey = event.key;
-    valid = document.getElementById('console').innerText;
-    charGenerator();
-    let button = this.document.getElementById(pressedKey);
-    button.style.background = "orange";
-}
-)
-window.addEventListener('keyup', function () {
-    let button = this.document.getElementById(pressedKey);
-    button.style.background = "";
-}
-)
+const playAgain = document.getElementById('playagain');
+playAgain.addEventListener('click', function () {
+    pageSwitch('play-again', 'playground');
+    putScore('life', 5);
+    putScore('scoreboard', 0);
+})
+document.addEventListener('keyup', keyBoardEvent);
