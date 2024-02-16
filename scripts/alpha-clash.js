@@ -20,8 +20,8 @@ function keyBoardEvent(event) {
             currentScore = currentScore + 1;
             putScore('scoreboard', currentScore);
             removeButtonEffect(pressedKey);
-            continueGame();
         }
+        continueGame();
     } else {
         let currentLife = document.getElementById('life').innerText;
         currentLife = parseInt(currentLife);
