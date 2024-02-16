@@ -30,3 +30,10 @@ function removeButtonEffect(buttonId) {
     let element = document.getElementById(buttonId);
     element.style.background = "";
 }
+function timeOut() {
+    let finalScore = document.getElementById('scoreboard').innerText;
+    finalScore = parseInt(finalScore);
+    console.log(finalScore);
+    pageSwitch('playground', 'play-again');
+    putScore('finalscore', finalScore);
+}

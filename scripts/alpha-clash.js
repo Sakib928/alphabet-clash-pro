@@ -11,15 +11,17 @@ function continueGame() {
 function keyBoardEvent(event) {
     const pressedKey = event.key;
     const validKey = document.getElementById('console').innerText.toLowerCase();
-    // console.log(validKey);
     if (pressedKey === validKey) {
-        let currentScore = document.getElementById('scoreboard').innerText;
-        currentScore = parseInt(currentScore);
-        currentScore = currentScore + 1;
-        console.log(currentScore);
-        putScore('scoreboard', currentScore);
-        removeButtonEffect(pressedKey);
-        continueGame();
+        let currentLife = document.getElementById('life').innerText;
+        currentLife = parseInt(currentLife);
+        if (currentLife) {
+            let currentScore = document.getElementById('scoreboard').innerText;
+            currentScore = parseInt(currentScore);
+            currentScore = currentScore + 1;
+            putScore('scoreboard', currentScore);
+            removeButtonEffect(pressedKey);
+            continueGame();
+        }
     } else {
         let currentLife = document.getElementById('life').innerText;
         currentLife = parseInt(currentLife);
@@ -41,11 +43,5 @@ playAgain.addEventListener('click', function () {
     putScore('life', 3);
     putScore('scoreboard', 0);
 })
-function timeOut() {
-    let finalScore = document.getElementById('scoreboard').innerText;
-    finalScore = parseInt(finalScore);
-    console.log(finalScore);
-    pageSwitch('playground', 'play-again');
-    putScore('finalscore', finalScore);
-}
+
 document.addEventListener('keyup', keyBoardEvent);
